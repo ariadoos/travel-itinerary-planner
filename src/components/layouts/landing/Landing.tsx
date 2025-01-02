@@ -1,4 +1,4 @@
-import TogglePanel from "@/components/common-components/TogglePanel"
+import TogglePanel from "@/components/common/TogglePanel"
 import Filters from "@/components/home/Filters"
 
 export default function Landing() {

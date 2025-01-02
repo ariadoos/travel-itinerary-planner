@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/input"
-import DatePickerWithRange from "../common-components/DatePickerWithRange"
+import DatePickerWithRange from "../common/DatePickerWithRange"
 import { Button } from "../ui/button"
 
 export default function Filters() {
