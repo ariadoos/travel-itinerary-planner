@@ -4,7 +4,7 @@ This is a small project to make the travel itinerary. When travelling, we have t
 
 ## Installation
 
-This project is boostrap with (shadcn/ui with vite)[https://ui.shadcn.com/docs/installation/vite].
+*Note: This project is boostrap with [shadcn/ui with vite](https://ui.shadcn.com/docs/installation/vite).*
 
 - `npm install`
 
