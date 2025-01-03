@@ -5,7 +5,7 @@ import Landing from './components/layouts/landing/Landing'
 function App() {
 
   return (
-    <div className="flex flex-col flex-nowrap w-full h-full">
+    <div className="flex flex-col flex-nowrap w-full h-full bg-muted">
       <Header/>
       <Landing/>
     </div>
