@@ -1,13 +1,15 @@
 import { Input } from "@/components/ui/input"
-import DatePickerWithRange from "../common/DatePickerWithRange"
-import { Button } from "../ui/button"
+import { startOfDay } from "date-fns"
+import { Loader2 } from "lucide-react"
 import { useState } from "react"
 import { DateRange } from "react-day-picker"
 import * as system from '../../model/system'
-import { startOfDay } from "date-fns"
+import DatePickerWithRange from "../common/DatePickerWithRange"
+import { Button } from "../ui/button"
 
 interface FiltersProps {
     onApplySearchFilter: (formData: system.FiltersFormData) => void;
+    isLoading: boolean
 }
 /**
  * Filters component for the itinerary planner application.
@@ -19,7 +21,7 @@ interface FiltersProps {
  * 
  * @returns {JSX.Element} The rendered Filters component.
  */
-export default function Filters({ onApplySearchFilter }: FiltersProps) {
+export default function Filters({ onApplySearchFilter, isLoading = false }: FiltersProps) {
     const [formData, setFormData] = useState<system.FiltersFormData>({ dateRange: undefined, searchText: '' })
     const [errors, setErrors] = useState<{ searchText?: string, dateRange?: string }>({})
 
@@ -40,7 +42,7 @@ export default function Filters({ onApplySearchFilter }: FiltersProps) {
     const validateForm = (): boolean => {
         const newErrors: { searchText?: string, dateRange?: string } = {}
         const currentDate = new Date().toISOString()
- 
+
         if (!formData.searchText) {
             newErrors.searchText = "Search text cannot be empty"
         }
@@ -61,7 +63,7 @@ export default function Filters({ onApplySearchFilter }: FiltersProps) {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault()
 
-        if (validateForm()) {
+        if (validateForm() && !isLoading) {
             onApplySearchFilter(formData)
         }
     }
@@ -79,13 +81,16 @@ export default function Filters({ onApplySearchFilter }: FiltersProps) {
 
                 <div className="flex flex-col gap-1">
                     <DatePickerWithRange onDateSelected={handleDateSelection}
-                    isError = {errors.dateRange ? true: false}
+                        isError={errors.dateRange ? true : false}
                     />
 
                     {errors.dateRange && <span className="text-red-500">{errors.dateRange}</span>}
                 </div>
 
-                <Button type="submit">Apply</Button>
+                <Button type="submit" disabled={isLoading}>{
+                    isLoading ? (<>
+                        <Loader2 className="animate-spin" />
+                        Please wait</>) : 'Apply'}</Button>
             </div>
         </form>
     )
