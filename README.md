@@ -6,6 +6,8 @@ This is a small project to make the travel itinerary. When travelling, we have t
 
 *Note: This project is boostrap with [shadcn/ui with vite](https://ui.shadcn.com/docs/installation/vite).*
 
+- Copy the content of `.env.example` file to your `.env` file and add your [openai api key](https://openai.com/index/openai-api/).
+
 - `npm install`
 
 - `npm run dev`

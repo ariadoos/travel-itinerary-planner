@@ -3,18 +3,23 @@ import DatePickerWithRange from "../common/DatePickerWithRange"
 import { Button } from "../ui/button"
 import { useState } from "react"
 import { DateRange } from "react-day-picker"
-import * as system from '../model/system'
+import * as system from '../../model/system'
 import { startOfDay } from "date-fns"
 
+interface FiltersProps {
+    onApplySearchFilter: (formData: system.FiltersFormData) => void;
+}
 /**
  * Filters component for the itinerary planner application.
  * 
  * This component provides a form with inputs for selecting a date range and entering a search text.
  * It includes validation for the form fields and displays error messages if the validation fails.
  * 
+ * @param {function} props.onApplySearchFilter - Function to call when the form is submitted with valid data.
+ * 
  * @returns {JSX.Element} The rendered Filters component.
  */
-export default function Filters() {
+export default function Filters({ onApplySearchFilter }: FiltersProps) {
     const [formData, setFormData] = useState<system.FiltersFormData>({ dateRange: undefined, searchText: '' })
     const [errors, setErrors] = useState<{ searchText?: string, dateRange?: string }>({})
 
@@ -57,7 +62,7 @@ export default function Filters() {
         event.preventDefault()
 
         if (validateForm()) {
-            console.log('TODO: Handle form submission', formData)
+            onApplySearchFilter(formData)
         }
     }
 
