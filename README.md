@@ -1,4 +1,4 @@
-# Travel Itinerary Planner
+# Travel Itinerary Planner [WIP]
 
 This is a small project to make the travel itinerary. When travelling, we have to make the plan to visit around different places. We need to do some reasearch about the best places and plan according to their location. To remove those human effort and with help the of openai api, this will roughly generate the itinerary plan for a city. 
 
